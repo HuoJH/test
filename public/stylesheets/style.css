@@ -1,0 +1,843 @@
+@font-face {
+  font-family: lishu;
+  src: url(/fonts/lishu.ttf);
+}
+#cxyDYBMAlert {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left:0;top:0;
+  background-color: rgba(20,20,20,0.8);
+  z-index: 201802;
+}
+#cxyDYBMAlert_body {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  left: calc(50% - 150px);
+  top: calc(50% - 100px);
+  background-color: rgb(254,254,254);
+  border-radius: 8px;
+  border: 1px solid rgb(243,243,243);
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+  -webkit-transition: all 0.2s;
+}
+#cxyDYBMAlert_body_title {
+  position: absolute;
+  width: calc(100% - 40px);
+  height: 20px;
+  top: 30px;
+  left: 20px;
+  text-align: center;
+  line-height: 20px;
+  letter-spacing: 1px;
+  font-family: lishu;
+  font-weight: bolder;
+  font-size: 16px;
+  color: #222;
+}
+#cxyDYBMAlert_body_text {
+  position: absolute;
+  width: calc(100% - 40px);
+  max-height: 150px;
+  left: 20px;
+  top: 65px;
+  text-align: left;
+  letter-spacing: 2px;
+  font-family: lishu;
+  font-size: 14px;
+  color: rgb(70,70,70);
+  overflow: auto;
+}
+#cxyDYBMAlert_body_okButton {
+  position: absolute;
+  height: 30px;
+  right: 20px;
+  bottom: 10px;
+  text-align: right;
+  line-height: 30px;
+  letter-spacing: 2px;
+  font-family: lishu;
+  font-size: 16px;
+  font-weight: bolder;
+  color: rgb(20,200,20);
+  cursor: pointer;
+}
+
+#cxyDYBMPrompt {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left:0;top:0;
+  background-color: rgba(20,20,20,0.8);
+  z-index: 201802;
+}
+#cxyDYBMPrompt_body {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  left: calc(50% - 150px);
+  top: calc(50% - 100px);
+  background-color: rgb(254,254,254);
+  border-radius: 8px;
+  border: 1px solid rgb(243,243,243);
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+  -webkit-transition: all 0.2s;
+}
+#cxyDYBMPrompt_body_title {
+  position: absolute;
+  width: calc(100% - 40px);
+  height: 20px;
+  top: 30px;
+  left: 20px;
+  text-align: center;
+  line-height: 20px;
+  letter-spacing: 1px;
+  font-family: lishu;
+  font-weight: bolder;
+  font-size: 16px;
+  color: #222;
+}
+#cxyDYBMPrompt_body_input {
+  position: absolute;
+  width: calc(100% - 40px);
+  height: 40px;
+  left: 20px;
+  top: 65px;
+  border: none;
+  border-bottom: 1px solid rgb(180,180,180);
+  outline: none;
+  background-color: rgb(254,254,254);
+  -webkit-transition: all 0.2s;
+  text-align: center;
+  font-family: lishu;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+#cxyDYBMPrompt_body_input:focus {
+  border-bottom: 1px solid rgb(20,200,20);
+}
+#cxyDYBMPrompt_body_cancelButton {
+  position: absolute;
+  height: 30px;
+  right: 20px;
+  bottom: 10px;
+  text-align: right;
+  line-height: 30px;
+  letter-spacing: 2px;
+  font-family: lishu;
+  font-size: 16px;
+  font-weight: bolder;
+  color: rgb(20,200,20);
+  cursor: pointer;
+}
+#cxyDYBMPrompt_body_okButton {
+  position: absolute;
+  height: 30px;
+  left: 20px;
+  bottom: 10px;
+  text-align: left;
+  line-height: 30px;
+  letter-spacing: 2px;
+  font-family: lishu;
+  font-size: 16px;
+  font-weight: bolder;
+  color: rgb(20,200,20);
+  cursor: pointer;
+}
+
+
+body {
+  margin: 0;
+  color: rgb(240,240,240);
+  background-color: rgb(35,36,37);
+  text-shadow: black 0 0 5px;
+}
+.pack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.room {
+  position: absolute;
+  width: calc(50% - 15px);
+  height: calc(50% - 20px);
+  background-color: rgb(120,120,120);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(20,20,20);
+  transition: all 0.1s;
+}
+.room:active {
+  transform: scale(0.95);
+}
+.room_state {
+  position: absolute;
+  width: calc(100% - 50px);
+  height: 30px;
+  left: 25px;
+  top: 10px;
+  text-align: center;
+  line-height: 30px;
+  font-family: lishu;
+  font-size: 16px;
+}
+.room_playersLen {
+  position: absolute;
+  width: calc(100% - 20px);
+  height: 30px;
+  left: 10px;
+  top: 45px;
+  text-align: left;
+  line-height: 30px;
+  font-family: lishu;
+  font-size: 16px;
+}
+.room_player {
+  position: relative;
+  width: calc(100% - 20px);
+  height: 30px;
+  left: 10px;
+  top: 75px;
+  text-align: center;
+  line-height: 30px;
+  font-family: lishu;
+  font-size: 16px;
+}
+.pos1 {
+  left: 5px;
+  top: 10px;
+}
+.pos2 {
+  right: 5px;
+  top: 10px;
+}
+.pos3 {
+  left: 5px;
+  bottom: 10px;
+}
+.pos4 {
+  right: 5px;
+  bottom: 10px;
+}
+.lattic {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(80,80,80);
+  border-radius: 5px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 14px;
+  color: rgb(80,80,80);
+}
+.lattic_bingdong {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left:0;top:0;
+  background-color: rgba(180,180,180,0.65);
+  border-radius: 5px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 18px;
+  z-index: 2017;
+}
+.latticx {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top:0;left:0;
+  background-color: rgb(80,80,80);
+  border-radius: 2px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 8px;
+  color: rgb(80,80,80);
+}
+.latticx_bingdong {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left:0;top:0;
+  background-color: rgba(180,180,180,0.65);
+  border-radius: 2px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+}
+.chat {
+  position: absolute;
+  min-Width: 30px;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+  line-height: 30px;
+  font-family: lishu;
+  font-size: 12px;
+  background-color: rgb(254,254,254);
+  color: rgb(20,20,20);
+  border-radius: 5px;
+  display: inline-block;
+  transition: all 0.1s;
+}
+.hidden {
+  display: none;
+}
+.gameOver {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20,20,20,0.5);
+  z-index: 2018;
+}
+.gameOver_text {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  left: 0;top: calc(50% - 15px);
+  text-align: center;
+  line-height: 30px;
+  font-size: 28px;
+  font-weight: bolder;
+  font-family: lishu;
+}
+.win {
+  text-shadow: red 0 0 10px,red 0 0 10px,red 0 0 10px,
+  red 0 0 10px,red 0 0 10px;
+}
+.fail {
+  text-shadow: blue 0 0 10px,blue 0 0 10px,blue 0 0 10px,
+  blue 0 0 10px,blue 0 0 10px;
+}
+.loading_text {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  left:0;top:50%;
+  text-align: center;
+  line-height: 20px;
+  font-family: lishu;
+}
+.biaoqing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left:0;top:0;
+  background-color: rgba(20,20,20,0.7);
+  z-index: 2016;
+}
+.biaoqing_biaoqings {
+  position: absolute;
+  width: 300px;
+  height: calc(100% - 200px);
+  left: calc(50% - 152px);
+  bottom: 50px;
+  background-color: rgba(80,80,80,0.85);
+  border: 2px solid rgb(80,70,60);
+  border-radius: 5px;
+  z-index: 2016;
+  overflow: auto;
+}
+.biaoqing_biaoqings_biaoqing {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 5px;
+  border: 1px solid rgb(20,20,20);
+}
+.biaoqing_close {
+  width: 80px;
+  right: 10px;
+  top: 10px;
+}
+
+[latticValue="x"] {
+  color: rgb(250,250,250);
+  background-color: rgb(200,20,200);
+}
+[latticValue="2"] {
+  background-color: rgb(238,228,218);
+}
+[latticValue="4"] {
+  background-color: rgb(239,224,201);
+}
+[latticValue="8"] {
+  background-color: rgb(242,177,121);
+}
+[latticValue="16"] {
+  background-color: rgb(242,147,101);
+}
+[latticValue="32"] {
+  background-color: rgb(245,124,95);
+}
+[latticValue="64"] {
+  background-color: rgb(246,93,52);
+}
+[latticValue="128"] {
+  background-color: rgb(238,208,118);
+}
+[latticValue="256"] {
+  background-color: rgb(237,205,96);
+}
+[latticValue="512"] {
+  background-color: rgb(237,201,81);
+}
+[latticValue="1024"] {
+  background-color: rgb(237,197,63);
+}
+[latticValue="2048"] {
+  background-color: rgb(237,195,49);
+}
+[latticValue="4096"] {
+  background-color: rgb(0,0,0);
+}
+
+.login_header {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  top: calc(50% - 85px);
+  text-align: center;
+  line-height: 30px;
+  font-family: lishu;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.login_input {
+  position: absolute;
+  width: calc(100% - 40px);
+  height: 50px;
+  left: 20px;
+  top: calc(50% - 50px);
+  border-bottom: 1px solid rgb(150,150,150);
+  transition: all 0.1s;
+}
+.login_input_input {
+  position: absolute;
+  width: calc(100% - 10px);
+  height: 40px;
+  left: 5px;
+  top: 5px;
+  border: none;
+  outline: none;
+  background-color: rgb(35,36,37);
+  text-shadow: 0px 0px 0px rgb(250,250,250);
+  -webkit-text-fill-color: transparent;
+  font-size: 18px;
+}
+.login_input_input:focus {
+  color: rgb(200,20,20);
+}
+.login_button {
+  position: absolute;
+  width: calc(100% - 40px);
+  height: 50px;
+  left: 20px;
+  top: calc(50% + 20px);
+  background-color: rgb(200,20,20);
+  border-radius: 5px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  font-family: lishu;
+  font-weight: bolder;
+  box-shadow: 2px 2px 5px rgb(58,58,58);
+  transition: all 0.1s;
+  cursor: pointer;
+}
+.login_button:active {
+  transform: scale(0.95);
+}
+
+.hall_button {
+  position: absolute;
+  background-color: rgb(80,80,80);
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  font-family: lishu;
+  font-size: 16px;
+  font-weight: bolder;
+  border-radius: 4px;
+  box-shadow: 0 0 2px black;
+  bottom: 10px;
+  transition: all 0.1s;
+}
+.hall_button:active {
+  transform: scale(0.95);
+}
+.hall_exit {
+  width: 80px;
+  left: 10px;
+}
+.hall_chat {
+  width: 60px;
+  right: 10px;
+}
+.hall_online {
+  width: 60px;
+  right: 80px;
+}
+.hall_online_count {
+  position: absolute;
+  min-Width: 10px;
+  height: 20px;
+  right: -6px;
+  top: -6px;
+  background-color: rgb(200,20,20);
+  border-radius: 20px;
+  text-align: center;
+  line-height: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.hall_msgArea {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  background-color: rgb(40,40,40);
+  bottom: 60px;
+  overflow: hidden;
+}
+.hall_rooms {
+  position: absolute;
+  width: calc(100% - 20px);
+  height: calc(100% - 110px);
+  left: 10px;
+  top: 10px;
+}
+
+.game_mineArea {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-color: rgb(131,121,112);
+  left: calc(50% - 150px);
+  bottom: 100px;
+  border-radius: 8px;
+}
+.game_enemyArea {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(131,121,112);
+  border-radius: 4px;
+  left: calc(50% - 150px);
+  top: calc(50% - 250px);
+}
+.game_mine {
+  position: absolute;
+  width: 300px;
+  height: 80px;
+  left: calc(50% - 150px);
+  bottom: 10px;
+}
+.game_mine_name {
+  position: relative;
+  width: 120px;
+  height: 20px;
+  margin-bottom: 5px;
+  background-color: rgba(50,50,50,0.65);
+  text-align: center;
+  line-height: 20px;
+  font-family: lishu;
+  font-size: 12px;
+}
+.game_mine_hoster {
+  position: relative;
+  width: 120px;
+  height: 20px;
+  margin-bottom: 5px;
+  color: rgb(200,20,20);
+  background-color: rgba(50,50,50,0.65);
+  text-align: center;
+  line-height: 20px;
+  font-family: lishu;
+  font-size: 12px;
+}
+.game_mine_score {
+  position: relative;
+  width: 120px;
+  height: 20px;
+  margin-bottom: 5px;
+  background-color: rgba(50,50,50,0.65);
+  text-align: center;
+  line-height: 20px;
+  font-family: lishu;
+  font-size: 12px;
+}
+.game_mine_readyButton {
+  position: relative;
+  width: 120px;
+  height: 30px;
+  margin-bottom: 5px;
+  background-color: rgb(19,190,19);
+  border-radius: 5px;
+  text-align: center;
+  line-height: 30px;
+  font-family: lishu;
+  font-size: 16px;
+  font-weight: bolder;
+  transition: all 0.1s;
+}
+.game_mine_startButton:active ,
+.game_mine_readyButton:active {
+  transform: scale(0.95);
+}
+.game_mine_startButton {
+  position: relative;
+  width: 120px;
+  height: 30px;
+  margin-bottom: 5px;
+  background-color: rgb(190,80,19);
+  border-radius: 5px;
+  text-align: center;
+  line-height: 30px;
+  font-family: lishu;
+  font-size: 16px;
+  font-weight: bolder;
+  transition: all 0.1s;
+}
+.game_mine_skillArea {
+  position: absolute;
+  width: 170px;
+  height: 80px;
+  top: 0px;
+  right: 0px;
+  text-align: center;
+  line-height: 70px;
+  font-family: lishu;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.game_mine_skillArea_bingDongShu {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  left: 5px;top: 5px;
+  background-color: rgb(150,150,150);
+  border-radius: 5px;
+}
+.game_mine_skillArea_bingDongShu_count {
+  position: absolute;
+  min-Width: 10px;
+  height: 20px;
+  right: -5px;bottom: -5px;
+  background-color: rgba(80,80,80,0.6);
+  border-radius: 20px;
+  padding-right: 5px;
+  padding-left: 5px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}
+.game_mine_skillArea_zhangAiShu {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  right: 5px;top: 5px;
+  background-color: rgb(150,150,150);
+  border-radius: 5px;
+}
+.game_mine_skillArea_zhangAiShu_count {
+  position: absolute;
+  min-Width: 10px;
+  height: 20px;
+  right: -5px;bottom: -5px;
+  background-color: rgba(80,80,80,0.6);
+  border-radius: 20px;
+  padding-right: 5px;
+  padding-left: 5px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}
+.game_enemy {
+  position: absolute;
+  width: 120px;
+  height: 100px;
+  left: calc(50% - 35px);
+  top: calc(50% - 250px);
+}
+.game_enemy_name {
+  position: relative;
+  width: calc(100% - 10px);
+  height: 20px;
+  margin: 5px;
+  text-align: center;
+  line-height: 20px;
+  font-family: lishu;
+  font-size: 12px;
+  background-color: rgba(50,50,50,0.65);
+}
+.game_enemy_hoster {
+  position: relative;
+  width: calc(100% - 10px);
+  height: 20px;
+  margin: 5px;
+  text-align: center;
+  line-height: 20px;
+  font-family: lishu;
+  font-size: 12px;
+  color: rgb(200,20,20);
+  background-color: rgba(50,50,50,0.65);
+}
+.game_enemy_readyArea {
+  position: relative;
+  width: calc(100% - 10px);
+  height: 40px;
+  margin: 5px;
+  text-align: center;
+  line-height: 40px;
+  font-family: lishu;
+  font-size: 12px;
+}
+.game_enemy_readyArea_text {
+  position: absolute;
+  width:50px;
+  height: 25px;
+  left: calc(50% - 25px);
+  top: calc(50% - 12.5px);
+  border-radius: 4px;
+  border: 2px solid rgb(20,200,20);
+  text-align: center;
+  line-height: 25px;
+  font-family: lishu;
+  font-size: 12px;
+  color: rgb(20,200,20);
+  transform: rotate(-10deg) scale(0.8);
+}
+.game_enemy_score {
+  position: relative;
+  width: calc(100% - 10px);
+  height: 20px;
+  margin: 5px;
+  text-align: center;
+  line-height: 20px;
+  font-family: lishu;
+  font-size: 12px;
+  background-color: rgba(50,50,50,0.65);
+}
+.game_enemy_score_title {
+  position: absolute;
+  width: 35%;
+  height: 20px;
+  background-color: rgb(90,90,90);
+}
+.game_enemy_score_score {
+  position: absolute;
+  width: 65%;
+  height: 20px;
+  right: 0px;
+}
+.game_enemy_skillArea {
+  position: relative;
+  width: calc(100% - 10px);
+  height: 40px;
+  margin: 5px;
+  text-align: center;
+  line-height: 40px;
+  font-family: lishu;
+  font-size: 12px;
+  background-color: rgba(50,50,50,0.65);
+  font-size: 16px;
+}
+.game_enemy_skillArea_bingDongShu {
+  position: absolute;
+  width: calc(50% - 5px);
+  height: 100%;
+  background-color: rgb(150,150,150);
+  border-radius: 5px;
+}
+.game_enemy_skillArea_bingDongShu_count {
+  position: absolute;
+  min-Width: 10px;
+  height: 20px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgba(80,80,80,0.8);
+}
+.game_enemy_skillArea_zhangAiShu {
+  position: absolute;
+  width: calc(50% - 5px);
+  height: 100%;
+  right: 0px;
+  background-color: rgb(150,150,150);
+  border-radius: 5px;
+}
+.game_enemy_skillArea_zhangAiShu_count {
+  position: absolute;
+  min-Width: 10px;
+  height: 20px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgba(80,80,80,0.8);
+}
+.game_exit {
+  width: 80px;
+  right: 10px;
+  top: 10px;
+}
+.game_chat {
+  width: 80px;
+  right: 10px;
+  top: 50px;
+}
+.game_express {
+  width: 80px;
+  right: 10px;
+  top: 90px;
+}
+.game_time {
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  right: 10px;
+  top: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bolder;
+  text-shadow: red 0 0 5px;
+}
+.game_mineChat {
+  position: absolute;
+  max-width: 120px;
+  padding: 10px;
+  bottom: 60px;
+  left: calc(50% - 50px);
+  background-color: rgb(245,245,245);
+  border-radius: 5px;
+  color: rgb(25,25,25);
+  text-align: left;
+  font-size: 14px;
+  font-family: lishu;
+  z-index: 99999999;
+}
+.game_enemyChat {
+  position: absolute;
+  max-width: 120px;
+  padding: 10px;
+  top: calc(50% - 200px);
+  left: calc(50% - 45px);
+  background-color: rgb(245,245,245);
+  border-radius: 5px;
+  color: rgb(25,25,25);
+  text-align: left;
+  font-size: 14px;
+  font-family: lishu;
+  z-index: 99999999;
+}
